@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar'
+import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { MD3DarkTheme, PaperProvider } from 'react-native-paper'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import HomePage from './src/pages/HomePage'
+
+const theme = {
+  ...MD3DarkTheme,
+}
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomePage}
+            options={{ title: 'Hola' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+AppRegistry.registerComponent('key-remember-blank', () => App)
