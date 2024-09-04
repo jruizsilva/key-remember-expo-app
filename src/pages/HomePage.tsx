@@ -4,11 +4,11 @@ import { Button } from 'react-native-paper'
 
 interface Props {}
 
-export default function HomePage(_props: Props): JSX.Element {
+export function HomePage(_props: Props): JSX.Element {
   return (
     <>
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your appxdd!</Text>
+        <Text>Open up App.tsx to start working on your 123!</Text>
         <StatusBar style="auto" />
         <Button icon="camera">Press me</Button>
       </View>
@@ -24,3 +24,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+export default HomePage

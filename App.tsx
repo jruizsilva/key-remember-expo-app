@@ -1,9 +1,9 @@
+import '@expo/metro-runtime'
 import { NavigationContainer } from '@react-navigation/native'
-import { StatusBar } from 'expo-status-bar'
-import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { AppRegistry } from 'react-native'
 import { MD3DarkTheme, PaperProvider } from 'react-native-paper'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomePage from './src/pages/HomePage'
+import { HomePage } from '@/pages'
 
 const theme = {
   ...MD3DarkTheme,
