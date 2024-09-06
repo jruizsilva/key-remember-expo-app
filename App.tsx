@@ -13,7 +13,7 @@ import {
 } from 'react-native-paper'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import merge from 'deepmerge'
-import { HomePage } from '@/pages'
+import { HomeScreen, ProfileScreen } from '@/screens'
 
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
   reactNavigationLight: NavigationDefaultTheme,
@@ -23,18 +23,24 @@ const { LightTheme, DarkTheme } = adaptNavigationTheme({
 export const CombinedDefaultTheme = merge(MD3LightTheme, LightTheme)
 export const CombinedDarkTheme = merge(MD3DarkTheme, DarkTheme)
 
-const Stack = createNativeStackNavigator()
+export type RootStackParamList = {
+  Home: undefined
+  Profile: undefined
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function App() {
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer theme={CombinedDarkTheme}>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
-            component={HomePage}
+            component={HomeScreen}
             options={{ title: 'Hola' }}
           />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
