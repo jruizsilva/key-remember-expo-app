@@ -1,20 +1,34 @@
 import '@expo/metro-runtime'
-import { NavigationContainer } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native'
 import { AppRegistry } from 'react-native'
-import { MD3DarkTheme, PaperProvider } from 'react-native-paper'
+import {
+  MD3DarkTheme,
+  MD3LightTheme,
+  adaptNavigationTheme,
+  PaperProvider,
+} from 'react-native-paper'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import merge from 'deepmerge'
 import { HomePage } from '@/pages'
 
-const theme = {
-  ...MD3DarkTheme,
-}
+const { LightTheme, DarkTheme } = adaptNavigationTheme({
+  reactNavigationLight: NavigationDefaultTheme,
+  reactNavigationDark: NavigationDarkTheme,
+})
+
+export const CombinedDefaultTheme = merge(MD3LightTheme, LightTheme)
+export const CombinedDarkTheme = merge(MD3DarkTheme, DarkTheme)
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
+    <PaperProvider theme={CombinedDarkTheme}>
+      <NavigationContainer theme={CombinedDarkTheme}>
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
@@ -27,4 +41,4 @@ export default function App() {
   )
 }
 
-AppRegistry.registerComponent('key-remember-blank', () => App)
+AppRegistry.registerComponent('key-remember', () => App)

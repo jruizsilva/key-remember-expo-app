@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
-import { View, Text, StyleSheet } from 'react-native'
-import { Button } from 'react-native-paper'
+import { View, StyleSheet } from 'react-native'
+import { Button, Text } from 'react-native-paper'
 
 interface Props {}
 
@@ -8,7 +8,7 @@ export function HomePage(_props: Props): JSX.Element {
   return (
     <>
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your 123!</Text>
+        <Text>Open up App.tsx to start working on your!</Text>
         <StatusBar style="auto" />
         <Button icon="camera">Press me</Button>
       </View>
@@ -19,7 +19,6 @@ export function HomePage(_props: Props): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
