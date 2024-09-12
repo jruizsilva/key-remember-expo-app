@@ -1,10 +1,10 @@
 import { View } from 'react-native'
 import { Text } from 'react-native-paper'
 
-export function StackScreen() {
+export function DetailsScreen() {
   return (
     <View>
-      <Text>StackScr123213een</Text>
+      <Text>Details screen</Text>
     </View>
   )
 }

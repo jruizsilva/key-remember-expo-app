@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native'
 import { Button, Text } from 'react-native-paper'
-import { HomeScreenProps } from './props'
+import { HomeScreenProps } from '../props'
 
 export function HomeScreen({ navigation }: HomeScreenProps): JSX.Element {
   return (
@@ -10,10 +10,10 @@ export function HomeScreen({ navigation }: HomeScreenProps): JSX.Element {
         <Button
           icon={'book'}
           onPress={() => {
-            navigation.navigate('StackScreen')
+            navigation.navigate('Details')
           }}
         >
-          Ir a stack
+          Ir a details
         </Button>
       </View>
     </>
