@@ -1,20 +1,20 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { StatusBar } from 'expo-status-bar'
 import { View, StyleSheet } from 'react-native'
 import { Button, Text } from 'react-native-paper'
-import { RootStackParamList } from '../../App'
+import { HomeScreenProps } from './props'
 
-export function HomeScreen({
-  navigation,
-  route,
-}: NativeStackScreenProps<RootStackParamList, 'Home'>): JSX.Element {
+export function HomeScreen({ navigation }: HomeScreenProps): JSX.Element {
   return (
     <>
       <View style={styles.container}>
         <Text>Home screen!</Text>
-        <StatusBar style="auto" />
-        <Button icon="camera" onPress={() => navigation.navigate('Profile')}>
-          Go to profile
+        <Button
+          icon={'book'}
+          onPress={() => {
+            navigation.navigate('StackScreen')
+          }}
+        >
+          Ir a stack
         </Button>
       </View>
     </>
