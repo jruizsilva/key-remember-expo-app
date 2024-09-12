@@ -1,10 +1,11 @@
 import { HomeScreen, ProfileScreen, StackScreen } from '@/screens'
 import { AppRegistry } from 'react-native'
-import { Icon, PaperProvider } from 'react-native-paper'
+import { PaperProvider } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native'
 import { CombinedDarkTheme } from '@/theme'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 export type TabParamList = {
   Home: undefined
@@ -15,7 +16,6 @@ export type HomeStackParamList = {
   HomeScreen: undefined
   StackScreen: undefined
 }
-
 const HomeStackNavigator = createNativeStackNavigator<HomeStackParamList>()
 const Tab = createBottomTabNavigator<TabParamList>()
 
@@ -28,28 +28,35 @@ function HomeStack() {
   )
 }
 
-function MyTabs() {
+function TabGroup() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ navigation, route }) => ({
+        tabBarIcon: ({ color, size, focused }) => {
+          let iconName: keyof typeof MaterialCommunityIcons.glyphMap
+          switch (route.name) {
+            case 'Home':
+              iconName = focused ? 'home' : 'home-outline'
+              break
+            case 'Profile':
+              iconName = focused ? 'cog' : 'cog-outline'
+              break
+            default:
+              iconName = 'home'
+          }
+
+          return (
+            <MaterialCommunityIcons name={iconName} size={size} color={color} />
+          )
+        },
+      })}
+    >
       <Tab.Screen
         name="Home"
         component={HomeStack}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon source={'home'} size={size} color={color}></Icon>
-          ),
-          headerShown: false,
-        }}
+        options={{ headerShown: false }}
       />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon source={'cog'} size={size} color={color}></Icon>
-          ),
-        }}
-      />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   )
 }
@@ -58,7 +65,7 @@ export function Navigation() {
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer theme={CombinedDarkTheme}>
-        <MyTabs />
+        <TabGroup />
       </NavigationContainer>
     </PaperProvider>
   )

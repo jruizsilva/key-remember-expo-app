@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar'
 import { View, StyleSheet } from 'react-native'
 import { Button, Text } from 'react-native-paper'
 import { HomeScreenProps } from './props'
