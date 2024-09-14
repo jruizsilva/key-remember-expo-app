@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
 
-export function ProfileScreen(): JSX.Element {
+export function AccountScreen(): JSX.Element {
   return (
     <>
       <View style={styles.container}>

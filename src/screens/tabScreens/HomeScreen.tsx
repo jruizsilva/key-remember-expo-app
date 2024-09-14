@@ -1,29 +1,12 @@
-import { View, StyleSheet } from 'react-native'
-import { Button, Text } from 'react-native-paper'
+import { Appbar } from 'react-native-paper'
 import { HomeScreenProps } from '../props'
 
 export function HomeScreen({ navigation }: HomeScreenProps): JSX.Element {
   return (
     <>
-      <View style={styles.container}>
-        <Text>Home screen!</Text>
-        <Button
-          icon={'book'}
-          onPress={() => {
-            navigation.navigate('Details')
-          }}
-        >
-          Ir a details
-        </Button>
-      </View>
+      <Appbar.Header>
+        <Appbar.Content title="Key Photo Organizer" />
+      </Appbar.Header>
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

@@ -1,35 +1,35 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen } from './screens/tabScreens/HomeScreen'
-import { ProfileScreen } from './screens/tabScreens/ProfileScreen'
 import SearchScreen from './screens/tabScreens/SearchScreen'
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation'
+import { AccountScreen } from './screens/tabScreens/AccountScreen'
 
 export type TabParamList = {
   Home: undefined
-  Profile: undefined
   Search: undefined
+  Account: undefined
 }
 
-const Tab = createBottomTabNavigator<TabParamList>()
+const Tab = createMaterialBottomTabNavigator<TabParamList>()
 
 export function TabNavigation() {
   return (
     <Tab.Navigator
       screenOptions={({ navigation, route }) => ({
-        tabBarIcon: ({ color, size, focused }) => {
+        tabBarIcon: ({ color, focused }) => {
           let iconName: keyof typeof MaterialCommunityIcons.glyphMap
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline'
           } else if (route.name === 'Search') {
             iconName = focused ? 'magnify' : 'magnify'
-          } else if (route.name === 'Profile') {
+          } else if (route.name === 'Account') {
             iconName = focused ? 'account' : 'account-outline'
           } else {
             iconName = 'home'
           }
 
           return (
-            <MaterialCommunityIcons name={iconName} size={size} color={color} />
+            <MaterialCommunityIcons name={iconName} color={color} size={24} />
           )
         },
       })}
@@ -49,10 +49,10 @@ export function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Account"
+        component={AccountScreen}
         options={{
-          title: 'Perfil',
+          title: 'Mi cuenta',
         }}
       />
     </Tab.Navigator>
