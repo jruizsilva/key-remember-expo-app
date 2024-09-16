@@ -4,7 +4,7 @@ import { DetailsScreen } from './screens/stackScreens/DetailsScreen'
 
 export type StackParamList = {
   Tabs: undefined
-  Details: undefined
+  Details: { id: number }
 }
 
 const Stack = createNativeStackNavigator<StackParamList>()

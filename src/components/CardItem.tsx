@@ -10,7 +10,7 @@ export function CardItem() {
     <Card
       style={styles.container}
       onPress={() => {
-        navigation.navigate('Details')
+        navigation.navigate('Details', { id: 5 })
       }}
     >
       <Card.Cover

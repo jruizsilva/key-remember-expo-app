@@ -1,10 +1,13 @@
-import { View } from 'react-native'
-import { Text } from 'react-native-paper'
+import { Appbar } from 'react-native-paper'
+import { DetailsScreenProps } from '../props'
 
-export function DetailsScreen() {
+export function DetailsScreen({ navigation, route }: DetailsScreenProps) {
+  const { id } = route.params
   return (
-    <View>
-      <Text>Details screen</Text>
-    </View>
+    <>
+      <Appbar.Header>
+        <Appbar.Content title={`Details ${id}`} />
+      </Appbar.Header>
+    </>
   )
 }
