@@ -1,9 +1,18 @@
+import { StackParamList } from '@/StackNavigator'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { StyleSheet } from 'react-native'
 import { Card } from 'react-native-paper'
 
 export function CardItem() {
+  const navigation = useNavigation<NavigationProp<StackParamList>>()
+
   return (
-    <Card style={styles.container}>
+    <Card
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate('Details')
+      }}
+    >
       <Card.Cover
         source={{ uri: 'https://picsum.photos/700' }}
         style={{ height: 130 }}
