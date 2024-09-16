@@ -8,18 +8,15 @@ export default function SearchScreen() {
   const [searchQuery, setSearchQuery] = useState('')
   return (
     <>
-      <View style={{ rowGap: 16 }}>
+      <View style={{ padding: 16, rowGap: 16 }}>
         <Searchbar
-          mode="view"
           placeholder="Search"
           onChangeText={setSearchQuery}
           value={searchQuery}
           style={{ width: '100%' }}
         />
-        <View style={{ paddingHorizontal: 16, rowGap: 16 }}>
-          <FilterChips />
-          <CardList />
-        </View>
+        <FilterChips />
+        <CardList />
       </View>
     </>
   )
